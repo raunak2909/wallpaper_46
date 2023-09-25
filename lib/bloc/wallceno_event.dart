@@ -5,8 +5,8 @@ class WallcenoEvent {}
 
 class GetSearchWallper extends WallcenoEvent {
   String query;
- 
-  GetSearchWallper({required this.query, });
+  String? colorCode;
+  GetSearchWallper({required this.query, this.colorCode});
 }
 
 class GetTradingWallpaper extends WallcenoEvent {}

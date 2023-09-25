@@ -19,12 +19,12 @@ final List<String> bestofmonthImage = [
 class SeletColor{
   static const List<Map<String, dynamic>> colors = [
 {
-"name" : "Red",
-"color" : Color(0xffFF0000),
+"name" : "blue",
+"color" : Color(0xff4000ff),
 
 },
 {
-"name" : "Cyan",
+"name" : "00FFFF",
 "color" : Color(0xff00FFFF),
 
 },
@@ -35,7 +35,7 @@ class SeletColor{
 },
 
 {
-"name" : "DartBlue",
+"name" : "00008B",
 "color" : Color(0xff00008B),
 
 },

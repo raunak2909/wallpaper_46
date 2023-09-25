@@ -11,11 +11,11 @@ import '../../modal/datamodal.dart';
 
 class Categori_Wallpaper extends StatefulWidget {
   String query;
-  
+  String? colorCode;
 
   Categori_Wallpaper({
     required this.query,
-    
+    this.colorCode,
   });
 
   @override
@@ -32,7 +32,7 @@ class _Categori_WallpaperState extends State<Categori_Wallpaper> {
 
     //// search wallpaper
     ////// widget.query == widget are paprent class
-    context.read<WallcenoBloc>().add(GetSearchWallper(query: widget.query));
+    context.read<WallcenoBloc>().add(GetSearchWallper(query: widget.query, colorCode: widget.colorCode));
   }
 
   @override
@@ -45,6 +45,10 @@ class _Categori_WallpaperState extends State<Categori_Wallpaper> {
             child: CircularProgressIndicator(),
           );
         } else if (state is WallcenoErrorState) {
+          return Center(
+            child: Text(state.errorMes),
+          );
+        } else if(state is WallcenoFetchErrorState){
           return Center(
             child: Text(state.errorMes),
           );
@@ -75,7 +79,7 @@ class _Categori_WallpaperState extends State<Categori_Wallpaper> {
                       crossAxisCount: 2,
                       mainAxisSpacing: 10,
                       crossAxisSpacing: 10,
-                      childAspectRatio: 16 / 9),
+                      childAspectRatio: 9 / 16),
                   itemCount: state.mdata.photos!.length,
                   itemBuilder: (context, index) {
                     return InkWell(

@@ -4,7 +4,7 @@ class AppException_Handling implements Exception {
 
   AppException_Handling({required this.body, required this.title});
 
-  String toString() {
+  String formattedError() {
     return "$title: $body";
   }
 }

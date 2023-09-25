@@ -77,7 +77,7 @@ class _HomePageState extends State<HomePage> {
                       height: 20,
                     ),
                     TitleAndWidget(
-                        child: Color_Tone(), title: "The color tone"),
+                        child: Color_Tone(queryController: SearchController), title: "The color tone"),
                     SizedBox(
                       height: 20,
                     ),
@@ -114,7 +114,7 @@ class _HomePageState extends State<HomePage> {
                       height: 20,
                     ),
                     TitleAndWidget(
-                        child: Color_Tone(), title: "The color tone"),
+                        child: Color_Tone(queryController: SearchController), title: "The color tone"),
                     SizedBox(
                       height: 20,
                     ),

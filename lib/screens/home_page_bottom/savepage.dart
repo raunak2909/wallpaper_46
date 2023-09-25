@@ -12,11 +12,14 @@ class SavePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Save"),
       ),
-      body: TextField(
-        decoration: InputDecoration(
-            fillColor: Colors.white,
-            filled: true,
-            border: OutlineInputBorder()),
+      body: SizedBox(
+        width: 300,
+        child: TextField(
+          decoration: InputDecoration(
+              fillColor: Colors.white,
+              filled: true,
+              border: OutlineInputBorder()),
+        ),
       ),
     );
   }

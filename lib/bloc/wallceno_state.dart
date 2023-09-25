@@ -14,6 +14,13 @@ class WallcenoErrorState extends WallcenoState {
   });
 }
 
+class WallcenoFetchErrorState extends WallcenoState {
+  String errorMes;
+  WallcenoFetchErrorState({
+    required this.errorMes
+  });
+}
+
 class WallcenoLodadeState extends WallcenoState {
   DataModal mdata;
   WallcenoLodadeState({required this.mdata});

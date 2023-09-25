@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:wellceno_ui/api_helper/api_helper.dart';
+import 'package:wellceno_ui/api_helper/app_exception_handling.dart';
 import 'package:wellceno_ui/api_helper/url_api.dart';
 import 'package:wellceno_ui/modal/datamodal.dart';
 
@@ -36,14 +37,25 @@ class WallcenoBloc extends Bloc<WallcenoEvent, WallcenoState> {
 
     on<GetSearchWallper>((event, emit) async {
       emit(WallcenoLodingState());
-      var response = await api_helper
-          .getDataApi("${UrlApi.searchURL}?query=${event.query}&per_page=40&color=red");
+      print("url : ${UrlApi.searchURL}?query=${event.query}&per_page=40&color=${event.colorCode ?? ""}");
 
-      if (response != null) {
-        emit(WallcenoLodadeState(mdata: DataModal.fromjson(response)));
-      } else {
-        emit(WallcenoErrorState(errorMes: "Internet Error"));
+      try{
+        var response = await api_helper
+            .getDataApi("${UrlApi.searchURL}?query=${event.query}&per_page=40&color=${event.colorCode ?? ""}");
+
+          emit(WallcenoLodadeState(mdata: DataModal.fromjson(response)));
+
+      } catch(e){
+        if(e is FetchException) {
+          emit(WallcenoFetchErrorState(errorMes: e.formattedError()));
+        } else {
+          emit(WallcenoErrorState(errorMes: (e as AppException_Handling).formattedError()));
+        }
+
+
       }
+
+
     });
   }
 }
